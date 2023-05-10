@@ -3,16 +3,15 @@ import RestaurantCards from "./RestaurantCard";
 import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import { filterData
- } from "../utils/helper";
+import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
-import UserContext from "../utils/userContext";
+import UserContext from "../utils/UserContext";
 const Body = () => {
   //searchText is a local state variable
   const [searchText, setSearchText] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     // console.log("useEffect");
@@ -63,13 +62,27 @@ const Body = () => {
         >
           Search
         </button>
-        <input value={user.name} />
+        <input
+          value={user.name}
+          onChange={(e) =>
+            setUser({ ...user, name: e.target.value})
+          }
+        />
+        <input
+          value={user.email}
+          onChange={(e) =>
+            setUser({ ...user, email: e.target.value})
+          }
+        />
       </div>
       <div className="grid grid-cols-4 gap-4">
         {filteredRestaurants.map((restaurant) => {
           return (
-            <Link to={"/restaurant/"+ restaurant.data.id} key={restaurant.data.id}>
-              <RestaurantCards {...restaurant.data}/>
+            <Link
+              to={"/restaurant/" + restaurant.data.id}
+              key={restaurant.data.id}
+            >
+              <RestaurantCards {...restaurant.data} />
             </Link>
           );
         })}

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { IMG_CDN_URL } from "../constants";
-import UserContext from "../utils/userContext";
+import UserContext from "../utils/UserContext";
 
 const RestaurantCards = ({name, cuisines, cloudinaryImageId, lastMileTravelString}) => {
 
