@@ -1,0 +1,16 @@
+1.What is prop drilling?
+->Props drilling is passing data via props from one component to another to further more, 
+down the heirarchy in component tree
+
+2.What is lifting the state up?
+->Sharing state is accomplished by moving it up,
+to the closest common ancestor of the components that need it
+
+3.What is Context Provider and Context Consumer?
+->Context Provider : Context.Providers is a React component which allows consuming component to
+subscribe to context changes
+Context Consumer : React component that subscribes to context changes.
+Contect.Consumer will allow to to subscribe to context within functional component.
+
+4.If you dont the pass the value to the provider does it take default value?
+->No, it does not take default value, instead it throws an error

@@ -1,0 +1,60 @@
+For any App: the following includes frontend layer
+UI layer is everything that you see on browser
+Data layer is states and props
+
+Babel converts jxs to js and that is converted into virtual DOM, and thats used for reconciliation
+
+Diff btn Previous and new Virtual DOM will be reflected on actual DOM.
+
+Difference btn state and props:
+state: local variable that can only be used inside our component
+props: is something that we use to pass data from one component to another 
+
+Props drilling : Passing props from parent to child, to its child, to its child
+
+Disadvantage of prop drilling:
+1.unnecessary components will have to keep unnecessary data
+2.as data changes all those components to which data is flowing from the top most parent component,
+will unnecessarily rerender
+
+How can we pass data from child to parent?
+i)We can build custom Hooks
+ii)pass callback as prop from parent to child, then call the callback in child when needed
+
+Reusable component:
+
+Lifting the state up: ii) in above is Lifting the state up
+
+2nd way of passing data from child to parent is bad way of writing
+because itll become lengthy and tedious as things get adding up
+
+So much work for tracking just one data i.e which section to be kept visible - 
+
+React Dev Tools
+
+-----------------------------------------------------Context
+
+We need our data to be placed somewhere global - so we use createContext to create a context - 
+createContext() from react lib
+useContext - to use context
+
+Why not have a global variable?
+->Offcourse reading data from global variable is possible but...react will not be tracking it,
+hence react doesnt run reconciliation on that global variable.
+
+useContext is for central storage and isnt tied to component, state and props are tied to component
+
+classComponent doesnt have hooks, so we import context that we want and use it as a component
+<UserContext.Consumer></UserContext.Consumer>
+<UserContext.Provider></UserContext.Provider>
+
+React router dom using context behind the scenes...look at react dev tools components...
+you see that Provider this Provider...
+
+When you create a context,
+UserContext.displayName = "UserContext"; -> to be displayed in react dev tools, 
+to differenciate from other context - for debugging not for development
+
+can I use context inside context??
+
+Understand nested context.
